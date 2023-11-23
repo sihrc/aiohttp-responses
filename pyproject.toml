@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "aiohttp responses"
+version = "0.1.0"
+description = "Mocking AIOHTTP Requests"
+authors = ["Chris Lee <chris@indico.io>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+black = "^23.11.0"
+isort = "^5.12.0"
+ipdb = "^0.13.13"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "-ra -q"
+testpaths = [
+    "tests"
+]
+
+[tool.poetry.scripts]
+test = 'pytest:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+files = ["aiohttp_responses/"]
+exclude = ["^tests/"]
+python_executable = ".venv/bin/python"
+ignore_missing_imports = true
+explicit_package_bases = true
+namespace_packages = true
+warn_unused_configs = true
